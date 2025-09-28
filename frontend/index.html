@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bus Tracker Prototype</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>PathFinder</h1>
+  </header>
+
+  <main>
+    <section id="page-map" class="page active">
+      <div id="planner" class="planner card">
+        <div class="planner-row">
+          <label for="start-select">From</label>
+          <select id="start-select"></select>
+          <button id="use-location" title="Use my location">📍</button>
+        </div>
+        <div class="planner-row">
+          <label for="dest-select">To</label>
+          <select id="dest-select"></select>
+        </div>
+        <div class="planner-actions">
+          <button id="plan-trip">Plan Trip</button>
+          <div class="spacer"></div>
+          <select id="route-select"></select>
+          <button id="center-me">My Location</button>
+        </div>
+      </div>
+      <div id="map"></div>
+      <div id="trip-card" class="card hidden">
+        <div class="trip-row"><strong id="trip-title">Trip</strong></div>
+        <div class="trip-row">Bus: <span id="trip-bus"></span></div>
+        <div class="trip-row">ETA total: <span id="trip-eta"></span></div>
+        <div class="trip-row">Fare: ₹<span id="trip-fare"></span></div>
+        <div class="trip-row">Path: <span id="trip-path"></span></div>
+      </div>
+      <div id="eta-card" class="card hidden">
+        <div><strong id="eta-bus"></strong></div>
+        <div>Next Stop: <span id="eta-next-stop"></span></div>
+        <div>ETA: <span id="eta-time"></span></div>
+        <div>Speed: <span id="eta-speed"></span> km/h</div>
+        <div>Status: <span id="eta-status"></span></div>
+      </div>
+      <div id="fallback" class="hidden">
+        <h3>Fallback ETA</h3>
+        <div id="fallback-list"></div>
+      </div>
+    </section>
+
+    <section id="page-search" class="page">
+      <div class="search">
+        <input type="text" id="search-input" placeholder="Search bus number or stop" />
+        <button id="search-btn">Search</button>
+      </div>
+      <ul id="search-results"></ul>
+    </section>
+
+    <section id="page-favorites" class="page">
+      <h3>My Stops</h3>
+      <ul id="fav-list"></ul>
+    </section>
+  </main>
+
+  <nav class="bottombar">
+    <button data-tab="map" class="active">🗺 Map</button>
+    <button data-tab="search">🔍 Search</button>
+    <button data-tab="favorites">📍 My Stop</button>
+  </nav>
+
+  <!-- Splash Screen -->
+  <div id="splash" class="splash">
+    <div class="splash-inner">
+      <div class="logo">🧭</div>
+      <div class="brand">PathFinder</div>
+      <div class="tag">Smart public transport</div>
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/static/main.js"></script>
+</body>
+</html>
