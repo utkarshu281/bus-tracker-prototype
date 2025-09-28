@@ -20,9 +20,16 @@
           <select id="start-select"></select>
           <button id="use-location" title="Use my location">📍</button>
         </div>
+
+  
         <div class="planner-row">
           <label for="dest-select">To</label>
           <select id="dest-select"></select>
+        </div>
+        <div class="planner-row">
+          <label for="quick-search">Search</label>
+          <input id="quick-search" type="text" placeholder="Search bus or stop"/>
+          <button id="quick-search-btn">Go</button>
         </div>
         <div class="planner-actions">
           <button id="plan-trip">Plan Trip</button>
@@ -32,6 +39,48 @@
         </div>
       </div>
       <div id="map"></div>
+
+      <section id="info-panels" class="info-panels">
+        <div class="info-card">
+          <h4>Bus Number</h4>
+          <div id="info-bus">—</div>
+        </div>
+        <div class="info-card">
+          <h4>Price</h4>
+          <div>₹ <span id="info-price">—</span></div>
+        </div>
+        <div class="info-card wide">
+          <h4>Bus Stops (Trip Path)</h4>
+          <ol id="info-stops" class="stops-list"></ol>
+        </div>
+      </section>
+
+      <section id="stops-panel" class="stops-panel">
+        <div class="panel">
+          <h3>Stops</h3>
+          <div class="tabs">
+            <button class="tab active" data-tab="history">History</button>
+            <button class="tab" data-tab="favorites">Favorites</button>
+          </div>
+          <div class="tab-content" id="tab-history">
+            <ul id="history-list" class="simple-list"></ul>
+          </div>
+          <div class="tab-content hidden" id="tab-favorites">
+            <ul id="fav-list-inline" class="simple-list"></ul>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Buses Info</h3>
+          <div class="info-grid">
+            <div class="info-item"><label>Bus ID</label><div id="businfo-id">—</div></div>
+            <div class="info-item"><label>Number of Buses</label><div id="businfo-count">—</div></div>
+            <div class="info-item"><label>Fare</label><div>₹ <span id="businfo-fare">—</span></div></div>
+            <div class="info-item"><label>Next Stop</label><div id="businfo-next">—</div></div>
+            <div class="info-item"><label>Traffic Signal</label><div id="businfo-traffic">—</div></div>
+          </div>
+        </div>
+      </section>
+
       <div id="trip-card" class="card hidden">
         <div class="trip-row"><strong id="trip-title">Trip</strong></div>
         <div class="trip-row">Bus: <span id="trip-bus"></span></div>
@@ -70,17 +119,54 @@
     <button data-tab="map" class="active">🗺 Map</button>
     <button data-tab="search">🔍 Search</button>
     <button data-tab="favorites">📍 My Stop</button>
+    <button data-tab="profile">👤 Profile</button>
   </nav>
 
   <!-- Splash Screen -->
   <div id="splash" class="splash">
     <div class="splash-inner">
       <div class="logo">🧭</div>
-      <div class="brand">PathFinder</div>
+      <div class="brand">PATHFINDER</div>
       <div class="tag">Smart public transport</div>
       <div class="spinner"></div>
     </div>
   </div>
+
+  <!-- Profile Page -->
+  <section id="page-profile" class="page">
+    <div class="profile">
+      <h2>Profile</h2>
+      <div class="profile-grid">
+        <div class="profile-section">
+          <h4>Username</h4>
+          <input id="pf-username" type="text" placeholder="Enter your name" />
+        </div>
+        <div class="profile-section">
+          <h4>Email</h4>
+          <input id="pf-email" type="email" placeholder="Enter your email" />
+        </div>
+        <div class="profile-section">
+          <h4>Profile Photo URL</h4>
+          <input id="pf-photo" type="url" placeholder="https://..." />
+          <div class="pfp-preview"><img id="pf-photo-preview" alt="Preview"/></div>
+        </div>
+        <div class="profile-section">
+          <h4>Age</h4>
+          <input id="pf-age" type="number" min="0" max="120" />
+        </div>
+        <div class="profile-section">
+          <h4>ID Number</h4>
+          <input id="pf-id" type="text" placeholder="Your ID" />
+        </div>
+      </div>
+      <div class="profile-actions"><button id="pf-save">Save</button></div>
+      <div class="contact">
+        <h3>Contact</h3>
+        <p>Need help or want to leave a review?</p>
+        <p><a id="contact-mail" href="mailto:utkarshu888@gmail.com?subject=PathFinder%20Support">Email us</a></p>
+      </div>
+    </div>
+  </section>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="/static/main.js"></script>
