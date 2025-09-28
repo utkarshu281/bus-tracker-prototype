@@ -1,0 +1,26 @@
+{
+  "routes": [
+    {
+      "id": "R1",
+      "name": "Bus 12 - Central Loop",
+      "stops": [
+        { "id": "S1", "name": "Central Station", "lat": 12.9716, "lon": 77.5946 },
+        { "id": "S2", "name": "MG Road", "lat": 12.9752, "lon": 77.6050 },
+        { "id": "S3", "name": "Cubbon Park", "lat": 12.9763, "lon": 77.5929 },
+        { "id": "S4", "name": "Vidhana Soudha", "lat": 12.9797, "lon": 77.5907 },
+        { "id": "S5", "name": "Majestic", "lat": 12.9779, "lon": 77.5713 }
+      ]
+    },
+    {
+      "id": "R2",
+      "name": "Bus 24 - Tech Park Shuttle",
+      "stops": [
+        { "id": "S6", "name": "HSR Layout", "lat": 12.9121, "lon": 77.6446 },
+        { "id": "S7", "name": "Sarjapur Road", "lat": 12.9177, "lon": 77.6710 },
+        { "id": "S8", "name": "Bellandur", "lat": 12.9354, "lon": 77.6784 },
+        { "id": "S9", "name": "Marathahalli", "lat": 12.9567, "lon": 77.7019 },
+        { "id": "S10", "name": "ITPL", "lat": 12.9858, "lon": 77.7376 }
+      ]
+    }
+  ]
+}
