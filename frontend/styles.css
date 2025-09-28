@@ -1,9 +1,9 @@
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
 .topbar { position: fixed; top: 0; left: 0; right: 0; height: 56px; background: linear-gradient(90deg,#0ea5e9,#2563eb); color: #fff; display:flex; align-items:center; padding: 0 16px; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
-.topbar h1 { font-size: 18px; letter-spacing: 0.5px; }
+.topbar h1 { font-size: 22px; letter-spacing: 1px; text-transform: uppercase; }
 main { padding-top: 52px; padding-bottom: 64px; }
-#map { width: 100%; height: calc(100vh - 220px); background: #ddd; }
+#map { width: 100%; height: calc(100vh - 320px); background: #ddd; border-radius: 8px; overflow: hidden; }
 .controls { display:flex; gap:8px; padding: 8px; }
 .bottombar { position: fixed; bottom: 0; left: 0; right: 0; height: 56px; background: #f8fafc; border-top: 1px solid #e2e8f0; display:flex; justify-content: space-around; align-items: center; }
 .bottombar button { background: none; border: none; font-size: 14px; padding: 8px 12px; }
@@ -31,11 +31,74 @@ main { padding-top: 52px; padding-bottom: 64px; }
 /* Trip card */
 #trip-card .trip-row { margin: 4px 0; }
 
+/* Info panels */
+.info-panels { display:grid; grid-template-columns: repeat(2,1fr); gap:12px; padding: 12px; }
+.info-card { background:#ffffff; border:1px solid #e5e7eb; border-radius:10px; padding:12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.info-card.wide { grid-column: 1 / -1; }
+.info-card h4 { margin: 0 0 8px; font-size: 14px; color:#0f172a; }
+.stops-list { margin:0; padding-left: 18px; max-height: 140px; overflow:auto; }
+.stops-list li { padding: 2px 0; }
+
 /* Splash */
 .splash { position: fixed; inset:0; display:flex; align-items:center; justify-content:center; background: radial-gradient(80% 80% at 50% 20%, #e0f2fe 0%, #eff6ff 100%); z-index: 2000; }
 .splash-inner { display:flex; flex-direction:column; align-items:center; gap:8px; }
 .splash .logo { font-size: 44px; }
 .splash .brand { font-size: 24px; font-weight: 700; color:#0f172a; letter-spacing:0.5px; }
+.splash .brand { font-size: 32px; letter-spacing: 2px; }
 .splash .tag { color:#334155; font-size: 13px; }
 .splash .spinner { width: 28px; height: 28px; border-radius: 50%; border: 3px solid #93c5fd; border-top-color: #2563eb; animation: spin 1s linear infinite; margin-top: 6px; }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* Profile */
+.profile { padding: 12px; }
+.review-form textarea { width: 100%; padding: 8px; border:1px solid #e5e7eb; border-radius:8px; }
+.review-form button { margin-top:8px; background:#0ea5e9; color:#fff; border:none; border-radius:8px; padding:8px 10px; cursor:pointer; }
+
+/* Available list */
+.available { padding: 12px; }
+.available-header { display:flex; align-items:center; justify-content: space-between; margin-bottom: 8px; }
+.pill { background:#e0f2fe; color:#0369a1; border-radius: 999px; padding: 4px 10px; font-size: 12px; }
+.available-list { display: grid; gap: 12px; }
+.bus-card { background: #ffffffcc; backdrop-filter: blur(6px); border:1px solid #e5e7eb; border-radius: 14px; padding: 14px; box-shadow: 0 8px 20px rgba(2,6,23,0.08); display:grid; grid-template-columns: 1.2fr 1fr 1fr 1fr auto; align-items:center; }
+.bus-card .title { font-weight: 700; font-size: 16px; }
+.bus-card .subtitle { color:#475569; font-size: 12px; }
+.bus-meta { color:#0f172a; font-size: 13px; }
+.eta-badge { display:inline-flex; align-items:center; gap:6px; background:#e2e8f0; color:#0f172a; padding:6px 10px; border-radius: 999px; font-weight: 600; }
+.track-btn { background:#2563eb; color:#fff; border:none; border-radius:10px; padding:8px 12px; cursor:pointer; }
+
+/* Modal */
+.modal.hidden { display:none; }
+.modal { position: fixed; inset:0; z-index: 3000; }
+.modal-backdrop { position:absolute; inset:0; background: rgba(2,6,23,0.55); }
+.modal-dialog { position:absolute; left:50%; top:50%; transform: translate(-50%,-50%); width: min(720px, 92vw); background:#fff; border-radius: 16px; box-shadow: 0 20px 60px rgba(2,6,23,0.35); overflow:hidden; }
+.modal-header { display:flex; align-items:center; justify-content: space-between; padding:12px 14px; border-bottom:1px solid #e5e7eb; }
+.modal-header .title { font-weight:700; }
+.modal-header .close { background:none; border:none; font-size:18px; cursor:pointer; }
+.modal-body { padding: 12px; }
+.mini-map { width: 100%; height: 320px; border-radius: 10px; overflow: hidden; border:1px solid #e5e7eb; }
+.modal-meta { margin-top:8px; color:#334155; display:flex; gap:20px; }
+
+/* Stops panel */
+.stops-panel { display:grid; grid-template-columns: 1fr 1fr; gap:12px; padding: 12px; }
+.panel { background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; padding: 12px; box-shadow: 0 6px 16px rgba(2,6,23,0.06); }
+.tabs { display:flex; gap:8px; margin-bottom:8px; }
+.tab { background:#e2e8f0; border:none; border-radius:999px; padding:6px 10px; cursor:pointer; font-size:12px; }
+.tab.active { background:#2563eb; color:#fff; }
+.tab-content { min-height: 80px; }
+.simple-list { list-style:none; padding:0; margin:0; }
+.simple-list li { padding:6px 8px; border-bottom:1px solid #f1f5f9; display:flex; justify-content:space-between; gap:8px; }
+
+/* Buses info */
+.info-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; }
+.info-item { background:#f8fafc; border:1px solid #e5e7eb; border-radius:10px; padding:10px; }
+.info-item label { display:block; font-size:12px; color:#64748b; margin-bottom:4px; }
+
+/* Profile layout */
+.profile-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+.profile-section { background:#f8fafc; border:1px solid #e5e7eb; border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:6px; }
+.profile-section input { padding:8px; border:1px solid #e2e8f0; border-radius:8px; }
+.pfp-preview { margin-top:6px; }
+.pfp-preview img { width: 88px; height: 88px; object-fit: cover; border-radius:50%; border:2px solid #e2e8f0; }
+.profile-actions { margin-top:10px; }
+.profile-actions button { background:#22c55e; color:#fff; border:none; border-radius:8px; padding:8px 12px; cursor:pointer; }
+.contact { margin-top:16px; background:#ffffff; border:1px solid #e5e7eb; border-radius:10px; padding:12px; }
